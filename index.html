@@ -7,7 +7,6 @@
   <meta name="description" content="AJS Vehicle Services in Andover — expert servicing, diagnostics and repairs for all makes and models. Honest work, fair prices. Get in touch on WhatsApp today." />
   <meta name="theme-color" content="#0a0a0a" />
   <meta name="robots" content="index, follow" />
-  <meta name="author" content="AJS Vehicle Services" />
   <link rel="canonical" href="https://ajs-one.vercel.app/" />
 
   <!-- Open Graph -->
@@ -18,21 +17,16 @@
   <meta property="og:site_name" content="AJS Vehicle Services" />
   <meta property="og:locale" content="en_GB" />
   <meta property="og:image" content="https://ajs-one.vercel.app/image.png" />
-  <meta property="og:image:alt" content="AJS Vehicle Services — independent garage in Andover" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="AJS Vehicle Services | Car Servicing &amp; Repairs in Andover" />
   <meta name="twitter:description" content="Expert servicing, diagnostics and repairs for all makes and models in Andover. Honest work, fair prices." />
   <meta name="twitter:image" content="https://ajs-one.vercel.app/image.png" />
-  <meta name="twitter:image:alt" content="AJS Vehicle Services — independent garage in Andover" />
 
   <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="apple-touch-icon" href="favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Preload the hero background so the largest-contentful paint loads sooner -->
-  <link rel="preload" as="image" href="images/hero.svg" fetchpriority="high" />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" />
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
@@ -48,7 +42,6 @@
     "telephone": "+447399479952",
     "email": "ajsvehicleservices@outlook.com",
     "priceRange": "££",
-    "currenciesAccepted": "GBP",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Unit 142-144, The Commercial Centre, Picket Piece",
@@ -56,15 +49,6 @@
       "addressRegion": "Hampshire",
       "postalCode": "SP11 6RU",
       "addressCountry": "GB"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 51.2185,
-      "longitude": -1.4084
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": "Andover"
     },
     "openingHoursSpecification": [
       {
@@ -96,7 +80,6 @@
   --radius: 14px;
   --maxw: 1180px;
   --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
-  --header-h: 92px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -123,15 +106,6 @@ h1, h2, h3, h4 {
 }
 
 a { color: inherit; text-decoration: none; }
-
-/* Skip link for keyboard / screen-reader users */
-.skip-link {
-  position: absolute; left: 12px; top: -60px; z-index: 400;
-  background: var(--blue); color: #fff; padding: 10px 16px; border-radius: 8px;
-  font-family: "Rajdhani", sans-serif; font-weight: 700; letter-spacing: 0.5px;
-  transition: top 0.2s ease;
-}
-.skip-link:focus { top: 12px; }
 
 .accent {
   background: linear-gradient(90deg, var(--blue-bright), var(--red-bright));
@@ -195,7 +169,7 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
   border-bottom-color: rgba(59, 141, 255, 0.25);
 }
-.nav-inner { display: flex; align-items: center; justify-content: space-between; height: var(--header-h); transition: height 0.3s ease; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 92px; transition: height 0.3s ease; }
 .site-header.scrolled .nav-inner { height: 72px; }
 .brand { display: inline-flex; align-items: center; }
 .logo-text { display: flex; flex-direction: column; line-height: 0.92; transition: transform 0.3s ease; }
@@ -349,9 +323,8 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--line); background: var(--panel-2);
   display: grid; place-items: center; position: relative;
 }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; cursor: zoom-in; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; cursor: pointer; }
 .gallery-item img:hover { transform: scale(1.06); }
-.gallery-item img:focus-visible { outline: 2px solid var(--blue-bright); outline-offset: 3px; }
 .gallery-item.placeholder span {
   font-family: "Rajdhani", sans-serif; font-weight: 600; color: var(--silver-dim);
   letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;
@@ -392,6 +365,9 @@ a { color: inherit; text-decoration: none; }
 .footer-social { display: inline-flex !important; align-items: center; gap: 8px; }
 .footer-bottom { border-top: 1px solid var(--line); padding: 22px 24px; text-align: center; }
 .footer-bottom p { color: var(--silver-dim); font-size: 0.86rem; }
+.footer-credit { font-size: 0.78rem; opacity: 0.7; margin-top: 6px; }
+.footer-credit a { color: var(--silver-dim); text-decoration: underline; text-underline-offset: 2px; transition: color 0.15s; }
+.footer-credit a:hover { color: var(--blue-bright); }
 
 /* ===== Floating WhatsApp ===== */
 .whatsapp-float {
@@ -511,7 +487,7 @@ a:focus-visible, button:focus-visible {
 }
 @media (max-width: 720px) {
   .nav {
-    position: fixed; top: var(--header-h); right: 0; height: calc(100vh - var(--header-h)); height: calc(100dvh - var(--header-h)); width: min(78vw, 320px);
+    position: fixed; top: 74px; right: 0; height: calc(100vh - 74px); height: calc(100dvh - 74px); width: min(78vw, 320px);
     flex-direction: column; align-items: flex-start; gap: 22px; padding: 32px 28px;
     background: var(--black-2); border-left: 1px solid var(--line);
     transform: translateX(110%); transition: transform 0.3s ease;
@@ -536,8 +512,6 @@ a:focus-visible, button:focus-visible {
 </head>
 <body>
 
-  <a class="skip-link" href="#main">Skip to main content</a>
-
   <!-- ===== Header ===== -->
   <header class="site-header" id="top">
     <div class="container nav-inner">
@@ -545,13 +519,13 @@ a:focus-visible, button:focus-visible {
         <span class="logo-text"><span class="logo-ajs">AJS</span><span class="logo-sub">Vehicle Services</span></span>
       </a>
 
-      <nav class="nav" id="nav" aria-label="Primary">
+      <nav class="nav" id="nav">
         <a href="#services">Services</a>
         <a href="#about">About</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
         <a class="nav-call" href="tel:+447399479952" aria-label="Call AJS Vehicle Services on 07399 479952"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.24 1.02l-2.21 2.2Z"/></svg> Call</a>
-        <a class="nav-cta" href="https://wa.me/447399479952?text=Hi%20AJS%2C%20I%27ve%20got%20some%20work%20that%20needs%20doing%20on%20my%20car.%20When%20would%20be%20a%20good%20time%20to%20have%20a%20chat%20about%20it%3F%20Thanks%21" target="_blank" rel="noopener" aria-label="Message AJS Vehicle Services on WhatsApp">
+        <a class="nav-cta" href="https://wa.me/447399479952?text=Hi%20AJS%2C%20I%27ve%20got%20some%20work%20that%20needs%20doing%20on%20my%20car.%20When%20would%20be%20a%20good%20time%20to%20have%20a%20chat%20about%20it%3F%20Thanks%21" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.523 5.248l-.999 3.648 3.965-1.043zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
           WhatsApp
         </a>
@@ -563,16 +537,14 @@ a:focus-visible, button:focus-visible {
     </div>
   </header>
 
-  <main id="main">
-
   <!-- ===== Hero ===== -->
-  <section class="hero" aria-labelledby="hero-heading">
+  <section class="hero">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="orb orb-1" aria-hidden="true"></div>
     <div class="orb orb-2" aria-hidden="true"></div>
     <div class="container hero-inner">
       <p class="eyebrow">Andover &bull; All Makes &amp; Models</p>
-      <h1 id="hero-heading">Expert care for your vehicle,<br><span class="accent">honest prices</span> every time.</h1>
+      <h1>Expert care for your vehicle,<br><span class="accent">honest prices</span> every time.</h1>
       <p class="hero-sub">AJS Vehicle Services keeps you on the road with quality servicing, advanced diagnostics and repairs for any make or model — no main-dealer mark-up.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="https://wa.me/447399479952?text=Hi%20AJS%2C%20I%27ve%20got%20some%20work%20that%20needs%20doing%20on%20my%20car.%20When%20would%20be%20a%20good%20time%20to%20have%20a%20chat%20about%20it%3F%20Thanks%21" target="_blank" rel="noopener">
@@ -599,58 +571,58 @@ a:focus-visible, button:focus-visible {
   </div>
 
   <!-- ===== Services ===== -->
-  <section class="section" id="services" aria-labelledby="services-heading">
+  <section class="section" id="services">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">What we do</p>
-        <h2 id="services-heading">Our Services</h2>
+        <h2>Our Services</h2>
         <p class="section-lead">From an air-con recharge to a full engine or gearbox rebuild, we have the equipment and the expertise to keep your vehicle in top condition — whatever you drive.</p>
       </div>
 
       <div class="grid services-grid">
         <article class="card">
-          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.7 2.7-2.4-.6-.6-2.4 2.7-2.7Z"/></svg></div>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.7 2.7-2.4-.6-.6-2.4 2.7-2.7Z"/></svg></div>
           <h3>All Makes Servicing</h3>
           <p>Whatever you drive, we keep it running at its best with manufacturer-standard servicing that protects your warranty and your wallet.</p>
         </article>
         <article class="card">
-          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2 5 4-12 2 7h2.5"/><circle cx="19.5" cy="12" r="1.6"/></svg></div>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2 5 4-12 2 7h2.5"/><circle cx="19.5" cy="12" r="1.6"/></svg></div>
           <h3>Advanced Diagnostics</h3>
           <p>Industry-leading diagnostic equipment pinpoints faults fast, so your time off the road is as short as possible.</p>
         </article>
         <article class="card">
-          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 8.5 20 4m-3-1 1 1 2-2-1-1a4 4 0 0 0-5 5l-9 9 2 2 9-9a4 4 0 0 0 5-5Z"/><path d="m6 14-3 3 1 1 3-3"/></svg></div>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 8.5 20 4m-3-1 1 1 2-2-1-1a4 4 0 0 0-5 5l-9 9 2 2 9-9a4 4 0 0 0 5-5Z"/><path d="m6 14-3 3 1 1 3-3"/></svg></div>
           <h3>Repairs &amp; Rebuilds</h3>
           <p>From brakes, clutches and suspension to complete engine and gearbox rebuilds — done properly, first time.</p>
         </article>
         <article class="card">
-          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19"/><path d="M12 6 9.5 8.5M12 6l2.5 2.5M12 18l-2.5-2.5M12 18l2.5-2.5M6 12 8.5 9.5M6 12l2.5 2.5M18 12l-2.5-2.5M18 12l-2.5 2.5"/></svg></div>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19"/><path d="M12 6 9.5 8.5M12 6l2.5 2.5M12 18l-2.5-2.5M12 18l2.5-2.5M6 12 8.5 9.5M6 12l2.5 2.5M18 12l-2.5-2.5M18 12l-2.5 2.5"/></svg></div>
           <h3>Air Conditioning</h3>
           <p>Top frosty performance with minimum fuel consumption. We recharge, service and repair your air-con system.</p>
         </article>
         <article class="card">
-          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v4m0 10v4M3 12h4m10 0h4"/></svg></div>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v4m0 10v4M3 12h4m10 0h4"/></svg></div>
           <h3>Four Wheel Alignment</h3>
           <p>Precision wheel alignment that keeps tyre wear to an absolute minimum and your steering sharp.</p>
           <span class="svc-badge">By appointment</span>
         </article>
         <article class="card">
-          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18M3 10h18M3 15h12"/><path d="M16 17c2 0 3.5-1 3.5-3M14 20c2.5 0 4-1.3 4-3.5"/></svg></div>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18M3 10h18M3 15h12"/><path d="M16 17c2 0 3.5-1 3.5-3M14 20c2.5 0 4-1.3 4-3.5"/></svg></div>
           <h3>DPF Cleaning</h3>
           <p>Vehicle emissions matter. We restore your diesel particulate filter to full efficiency without the cost of replacement.</p>
         </article>
         <article class="card">
-          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 1 9-9"/><path d="M12 12 16 8"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><path d="M12 5v2m7 5h-2M5 12h2"/></svg></div>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 1 9-9"/><path d="M12 12 16 8"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><path d="M12 5v2m7 5h-2M5 12h2"/></svg></div>
           <h3>Remapping</h3>
           <p>Want the best possible performance and economy? This straightforward tuning set-up is the way to do it.</p>
         </article>
         <article class="card">
-          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="m12 3.5 1.2 4M5.6 8 9 9.8m-3.4 6.2 3.2-2.3M18.4 16l-3.2-2.3M18.4 8 15 9.8"/></svg></div>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="m12 3.5 1.2 4M5.6 8 9 9.8m-3.4 6.2 3.2-2.3M18.4 16l-3.2-2.3M18.4 8 15 9.8"/></svg></div>
           <h3>Tyres &amp; Brakes</h3>
           <p>Supply and fit of quality tyres, plus brake checks and replacements to keep you safe on the road.</p>
         </article>
         <article class="card">
-          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3 4 6v6c0 4.5 3.2 7.5 8 9 4.8-1.5 8-4.5 8-9V6l-8-3Z"/></svg></div>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3 4 6v6c0 4.5 3.2 7.5 8 9 4.8-1.5 8-4.5 8-9V6l-8-3Z"/></svg></div>
           <h3>MOTs</h3>
           <p>Keep your vehicle road-legal and safe. We arrange MOT testing to fit around you — just get in touch to book.</p>
           <span class="svc-badge">By appointment</span>
@@ -665,11 +637,11 @@ a:focus-visible, button:focus-visible {
   </section>
 
   <!-- ===== About ===== -->
-  <section class="section section-alt" id="about" aria-labelledby="about-heading">
+  <section class="section section-alt" id="about">
     <div class="container about-grid">
       <div class="about-text">
         <p class="eyebrow">Who we are</p>
-        <h2 id="about-heading">Local, independent &amp; on your side</h2>
+        <h2>Local, independent &amp; on your side</h2>
         <p>AJS Vehicle Services is an independent garage based in Picket Piece, Andover, built on a simple idea — that drivers deserve top-quality work without paying main-dealer prices for things that add no real value.</p>
         <p>We work on all makes and models. Whether it's a routine service, a stubborn warning light or a major repair, we use the latest diagnostic and workshop equipment to get the job done right — and we'll always explain what's needed and why, with no surprises on the bill.</p>
         <p>Most of our work comes from personal recommendation and customers coming back time and again. That trust is something we never take for granted.</p>
@@ -691,22 +663,22 @@ a:focus-visible, button:focus-visible {
   </section>
 
   <!-- ===== Gallery ===== -->
-  <section class="section" id="gallery" aria-labelledby="gallery-heading">
+  <section class="section" id="gallery">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">Our work</p>
-        <h2 id="gallery-heading">Gallery</h2>
+        <h2>Gallery</h2>
         <p class="section-lead">A look at the vehicles and jobs passing through the workshop. Follow us on Facebook for the latest.</p>
       </div>
 
       <div class="grid gallery-grid" id="galleryGrid">
         <!-- Drop your photos into images/gallery/ and update src below -->
-        <figure class="gallery-item"><img src="images/gallery/1.svg" alt="Matte black Lamborghini Huracan in the AJS workshop" width="800" height="600" loading="lazy" decoding="async" tabindex="0" role="button" aria-label="Enlarge image: matte black Lamborghini Huracan in the AJS workshop"></figure>
-        <figure class="gallery-item"><img src="images/gallery/2.svg" alt="Lamborghini Huracan interior" width="800" height="600" loading="lazy" decoding="async" tabindex="0" role="button" aria-label="Enlarge image: Lamborghini Huracan interior"></figure>
-        <figure class="gallery-item"><img src="images/gallery/3.svg" alt="BMW M2 on the ramp for servicing" width="800" height="600" loading="lazy" decoding="async" tabindex="0" role="button" aria-label="Enlarge image: BMW M2 on the ramp for servicing"></figure>
-        <figure class="gallery-item"><img src="images/gallery/4.svg" alt="VW Transporter undergoing repairs" width="800" height="600" loading="lazy" decoding="async" tabindex="0" role="button" aria-label="Enlarge image: VW Transporter undergoing repairs"></figure>
-        <figure class="gallery-item"><img src="images/gallery/5.svg" alt="Engine timing and valvetrain work" width="800" height="600" loading="lazy" decoding="async" tabindex="0" role="button" aria-label="Enlarge image: engine timing and valvetrain work"></figure>
-        <figure class="gallery-item"><img src="images/gallery/6.svg" alt="Air-con regas on the dual-gas station" width="800" height="600" loading="lazy" decoding="async" tabindex="0" role="button" aria-label="Enlarge image: air-con regas on the dual-gas station"></figure>
+        <figure class="gallery-item"><img src="images/gallery/1.svg" alt="Matte black Lamborghini Huracan in the AJS workshop" width="800" height="600" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="images/gallery/2.svg" alt="Lamborghini Huracan interior" width="800" height="600" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="images/gallery/3.svg" alt="BMW M2 on the ramp for servicing" width="800" height="600" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="images/gallery/4.svg" alt="VW Transporter undergoing repairs" width="800" height="600" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="images/gallery/5.svg" alt="Engine timing and valvetrain work" width="800" height="600" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="images/gallery/6.svg" alt="Air-con regas on the dual-gas station" width="800" height="600" loading="lazy" decoding="async"></figure>
       </div>
 
       <div class="gallery-cta">
@@ -719,11 +691,11 @@ a:focus-visible, button:focus-visible {
   </section>
 
   <!-- ===== Contact ===== -->
-  <section class="section section-alt" id="contact" aria-labelledby="contact-heading">
+  <section class="section section-alt" id="contact">
     <div class="container contact-grid">
       <div class="contact-info">
         <p class="eyebrow">Get in touch</p>
-        <h2 id="contact-heading">Let's get you booked in</h2>
+        <h2>Let's get you booked in</h2>
         <p>The quickest way to reach us is on WhatsApp — tell us about your vehicle and the work you need, and we'll come straight back to you.</p>
 
         <ul class="contact-list">
@@ -754,8 +726,6 @@ a:focus-visible, button:focus-visible {
       <div class="contact-hours">
         <h3>Opening hours</h3>
         <table class="hours">
-          <caption style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">AJS Vehicle Services opening hours</caption>
-          <tbody>
           <tr><td>Monday</td><td>8:30 – 17:30</td></tr>
           <tr><td>Tuesday</td><td>8:30 – 17:30</td></tr>
           <tr><td>Wednesday</td><td>8:30 – 17:30</td></tr>
@@ -763,14 +733,11 @@ a:focus-visible, button:focus-visible {
           <tr><td>Friday</td><td>8:30 – 17:30</td></tr>
           <tr><td>Saturday</td><td>Closed</td></tr>
           <tr><td>Sunday</td><td>Closed</td></tr>
-          </tbody>
         </table>
         <p class="hours-note">Hours are a guide — message us any time and we'll get back to you.</p>
       </div>
     </div>
   </section>
-
-  </main>
 
   <!-- ===== Footer ===== -->
   <footer class="site-footer">
@@ -779,13 +746,13 @@ a:focus-visible, button:focus-visible {
         <span class="logo-text logo-text--footer"><span class="logo-ajs">AJS</span><span class="logo-sub">Vehicle Services</span></span>
         <p>Independent vehicle servicing &amp; repairs in Andover. All makes, all models, honest prices.</p>
       </div>
-      <nav class="footer-col" aria-label="Footer">
+      <div class="footer-col">
         <h4>Explore</h4>
         <a href="#services">Services</a>
         <a href="#about">About</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
-      </nav>
+      </div>
       <div class="footer-col">
         <h4>Find us</h4>
         <p>Unit 142-144, The Commercial Centre,<br>Picket Piece, Andover, SP11 6RU</p>
@@ -793,12 +760,12 @@ a:focus-visible, button:focus-visible {
         <a href="mailto:ajsvehicleservices@outlook.com">ajsvehicleservices@outlook.com</a>
       </div>
       <div class="footer-col">
-        <h4>Follow</h4>
-        <a class="footer-social" href="https://www.facebook.com/p/AJS-Vehicle-Services-61578009718782/" target="_blank" rel="noopener" aria-label="AJS Vehicle Services on Facebook">
+        <h4>Connect</h4>
+        <a class="footer-social" href="https://www.facebook.com/p/AJS-Vehicle-Services-61578009718782/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
           Facebook
         </a>
-        <a class="footer-social" href="https://wa.me/447399479952?text=Hi%20AJS%2C%20I%27ve%20got%20some%20work%20that%20needs%20doing%20on%20my%20car.%20When%20would%20be%20a%20good%20time%20to%20have%20a%20chat%20about%20it%3F%20Thanks%21" target="_blank" rel="noopener" aria-label="Message AJS Vehicle Services on WhatsApp">
+        <a class="footer-social" href="https://wa.me/447399479952?text=Hi%20AJS%2C%20I%27ve%20got%20some%20work%20that%20needs%20doing%20on%20my%20car.%20When%20would%20be%20a%20good%20time%20to%20have%20a%20chat%20about%20it%3F%20Thanks%21" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.523 5.248l-.999 3.648 3.965-1.043zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
           WhatsApp
         </a>
@@ -806,6 +773,7 @@ a:focus-visible, button:focus-visible {
     </div>
     <div class="container footer-bottom">
       <p>&copy; <span id="year"></span> AJS Vehicle Services. All rights reserved.</p>
+      <p class="footer-credit">Site designed by <a href="https://shipitstudio.co.uk" target="_blank" rel="noopener">shipitstudio.co.uk</a></p>
     </div>
   </footer>
 
@@ -814,6 +782,126 @@ a:focus-visible, button:focus-visible {
     <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.523 5.248l-.999 3.648 3.965-1.043zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
   </a>
 
-  <script src="main.js" defer></script>
+  <script>
+// ===== AJS Vehicle Services =====
+(function () {
+  "use strict";
+
+  // Mobile nav toggle
+  var toggle = document.getElementById("navToggle");
+  var nav = document.getElementById("nav");
+  if (toggle && nav) {
+    toggle.addEventListener("click", function () {
+      var open = nav.classList.toggle("open");
+      toggle.classList.toggle("open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    nav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        nav.classList.remove("open");
+        toggle.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  // Current year in footer
+  var yr = document.getElementById("year");
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  // Scroll reveal with staggered delays for grouped items
+  var revealTargets = document.querySelectorAll(
+    ".card, .about-card, .about-text, .gallery-item, .contact-hours, .contact-info, .section-head"
+  );
+  revealTargets.forEach(function (el) {
+    el.classList.add("reveal");
+    // stagger items that share a grid (cards / gallery)
+    if (el.classList.contains("card") || el.classList.contains("gallery-item")) {
+      var siblings = Array.prototype.slice.call(el.parentNode.children);
+      var i = siblings.indexOf(el);
+      el.style.setProperty("--d", (i % 4) * 0.09 + "s");
+    }
+  });
+
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          if (entry.target.classList.contains("card")) {
+            (function (c) { setTimeout(function () { c.classList.add("snappy"); }, 850); })(entry.target);
+          }
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealTargets.forEach(function (el) { io.observe(el); });
+  } else {
+    revealTargets.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Scroll progress bar
+  var bar = document.createElement("div");
+  bar.className = "scroll-progress";
+  document.body.appendChild(bar);
+
+  // Sticky header shrink
+  var header = document.querySelector(".site-header");
+  var hero = document.querySelector(".hero");
+  var orbs = document.querySelectorAll(".orb");
+
+  function onScroll() {
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+    var docH = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (docH > 0 ? (st / docH) * 100 : 0) + "%";
+    if (header) header.classList.toggle("scrolled", st > 40);
+    if (!reduceMotion && hero && st < window.innerHeight) {
+      // subtle parallax on hero orbs
+      orbs.forEach(function (o, idx) {
+        o.style.transform = "translateY(" + st * (idx ? 0.18 : 0.28) + "px)";
+      });
+    }
+  }
+  var ticking = false;
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(function () { onScroll(); ticking = false; }); ticking = true; }
+  }, { passive: true });
+  onScroll();
+
+  // 3D tilt on service cards
+  if (!reduceMotion && window.matchMedia("(hover: hover)").matches) {
+    document.querySelectorAll(".services-grid .card").forEach(function (card) {
+      card.addEventListener("mousemove", function (e) {
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = "translateY(-6px) rotateX(" + (-py * 7) + "deg) rotateY(" + (px * 7) + "deg)";
+      });
+      card.addEventListener("mouseleave", function () { card.style.transform = ""; });
+    });
+  }
+
+  // Lightbox for gallery images (skips placeholders)
+  var lightbox = document.createElement("div");
+  lightbox.className = "lightbox";
+  lightbox.innerHTML = '<img alt="AJS gallery image" />';
+  document.body.appendChild(lightbox);
+  var lightboxImg = lightbox.querySelector("img");
+
+  document.querySelectorAll(".gallery-item img").forEach(function (img) {
+    img.addEventListener("click", function () {
+      lightboxImg.src = img.src;
+      lightbox.classList.add("open");
+    });
+  });
+  lightbox.addEventListener("click", function () { lightbox.classList.remove("open"); });
+  document.addEventListener("keyup", function (e) {
+    if (e.key === "Escape") lightbox.classList.remove("open");
+  });
+})();
+
+</script>
 </body>
 </html>
