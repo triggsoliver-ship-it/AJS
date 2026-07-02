@@ -25,6 +25,13 @@
   <meta name="twitter:image" content="https://ajs-one.vercel.app/image.png" />
 
   <link rel="icon" type="image/png" href="favicon.png" />
+  <!-- PWA: installable web app -->
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="AJS" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" />
@@ -902,6 +909,67 @@ a:focus-visible, button:focus-visible {
   });
 })();
 
+</script>
+
+<!-- PWA: install banner + service worker -->
+<div id="pwa-banner" style="display:none; position:fixed; left:12px; right:12px; bottom:12px; z-index:9999; background:#1c1f26; border:1px solid rgba(199,204,209,0.18); border-radius:14px; padding:14px 16px; box-shadow:0 18px 50px rgba(0,0,0,0.55); font-family:'Inter',system-ui,sans-serif; color:#c7ccd1; max-width:440px; margin:0 auto;">
+  <button id="pwa-close" aria-label="Dismiss" style="position:absolute; top:8px; right:10px; background:none; border:none; color:#9aa0a7; font-size:1.1rem; cursor:pointer; line-height:1;">&times;</button>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <img src="/icons/icon-192.png" alt="" width="44" height="44" style="border-radius:10px; flex-shrink:0;" />
+    <div style="font-size:0.9rem; line-height:1.45;">
+      <strong style="color:#eef1f4; display:block; margin-bottom:2px;">Add AJS to your home screen</strong>
+      <span id="pwa-msg">Get one-tap access, just like an app.</span>
+    </div>
+  </div>
+  <button id="pwa-install" style="display:none; margin-top:12px; width:100%; background:linear-gradient(135deg,#1f6feb,#3b8dff); color:#fff; border:none; border-radius:10px; padding:11px; font-family:'Rajdhani',sans-serif; font-weight:700; font-size:1rem; letter-spacing:0.6px; text-transform:uppercase; cursor:pointer;">Add to Home Screen</button>
+</div>
+<script>
+(function () {
+  // Register service worker
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sw.js").catch(function () {});
+  }
+
+  var banner = document.getElementById("pwa-banner");
+  var installBtn = document.getElementById("pwa-install");
+  var msg = document.getElementById("pwa-msg");
+  var deferredPrompt = null;
+
+  // Already installed / running as app? Do nothing.
+  var standalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  // Dismissed recently? Stay quiet for 14 days.
+  var dismissedAt = 0;
+  try { dismissedAt = parseInt(localStorage.getItem("pwaDismissed") || "0", 10); } catch (e) {}
+  var snoozed = Date.now() - dismissedAt < 14 * 24 * 60 * 60 * 1000;
+
+  function show() { if (!standalone && !snoozed) banner.style.display = "block"; }
+  function hide(remember) {
+    banner.style.display = "none";
+    if (remember) { try { localStorage.setItem("pwaDismissed", String(Date.now())); } catch (e) {} }
+  }
+
+  document.getElementById("pwa-close").addEventListener("click", function () { hide(true); });
+
+  // Android / Chrome: native install prompt
+  window.addEventListener("beforeinstallprompt", function (e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = "block";
+    show();
+  });
+  installBtn.addEventListener("click", function () {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(function () { deferredPrompt = null; hide(true); });
+  });
+
+  // iPhone / iPad Safari: show instructions (no native prompt on iOS)
+  var isIos = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  if (isIos && !standalone) {
+    msg.innerHTML = 'Tap the <strong style="color:#eef1f4;">Share</strong> button <span style="color:#3b8dff;">&#x2191;</span> below, then choose <strong style="color:#eef1f4;">&ldquo;Add to Home Screen&rdquo;</strong>.';
+    setTimeout(show, 2500);
+  }
+})();
 </script>
 </body>
 </html>
