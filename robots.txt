@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ajs-one.vercel.app/sitemap.xml
+Sitemap: https://www.ajsvehicleservices.co.uk/sitemap.xml
